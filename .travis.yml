@@ -1,0 +1,9 @@
+language: ruby
+rvm:
+  - 2.1.0
+  - 2.0.0
+  - 1.9.3
+before_install:
+  - gem install echoe --verbose
+  - rake build_gemspec --trace
+  - echo -e "source 'https://rubygems.org'\n\ngem 'echoe'\n\ngemspec" > Gemfile

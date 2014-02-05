@@ -1,8 +1,9 @@
-require 'minitest/unit'
 require 'json'
-require 'minitest/autorun'  
+require 'minitest/autorun'
+require 'minitest/pride'
 require "rack/test"
-require "#{File.dirname(__FILE__)}/../lib//rack/middleware/json-error-msg"
+
+require "rack/middleware/json-error-msg"
 
 module ActionDispatch
   module ParamsParser
@@ -13,7 +14,7 @@ end
 
 class TestJsonErrorMsg < MiniTest::Unit::TestCase
   include Rack::Test::Methods
-  
+
   def test_error
     app = proc { raise ActionDispatch::ParamsParser::ParseError.new("parse error") }
     request = Rack::MockRequest.new(Rack::Middleware::JsonErrorMsg.new(app))
@@ -21,7 +22,7 @@ class TestJsonErrorMsg < MiniTest::Unit::TestCase
     assert_equal 400, response.status
     assert_match /parse error/, response.body
   end
-  
+
   def test_no_error
     app = proc { [200, {}, ['']] }
     request = Rack::MockRequest.new(Rack::Middleware::JsonErrorMsg.new(app))
