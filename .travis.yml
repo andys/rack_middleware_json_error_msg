@@ -6,4 +6,4 @@ rvm:
 before_install:
   - gem install echoe --verbose
   - rake build_gemspec --trace
-  - echo "source 'https://rubygems.org'\n\ngem 'echoe'\n\ngemspec" > Gemfile
+  - echo -e "source 'https://rubygems.org'\n\ngem 'echoe'\n\ngemspec" > Gemfile
