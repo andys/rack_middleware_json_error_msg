@@ -3,5 +3,5 @@ Manifest
 README.md
 Rakefile
 lib/rack/middleware/json-error-msg.rb
-lib/rack/middleware/json-error-msg/railtie.rb
+lib/rack_middleware_json_error_msg.rb
 test/test.rb

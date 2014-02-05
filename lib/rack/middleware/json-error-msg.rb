@@ -1,9 +1,16 @@
-require 'json-error-msg/railtie' if defined?(Rails)
 
 module Rack
   module Middleware
     class JsonErrorMsg
       class Error < StandardError; end
+
+      if defined?(Rails)
+        class Railtie < Rails::Railtie
+          initializer "json-error-msg.configure_rails_initialization" do |app|
+            app.middleware.insert_before ActionDispatch::ParamsParser, "Rack::Middleware::JsonErrorMsg"
+          end
+        end
+      end
 
       attr_reader :app
 
