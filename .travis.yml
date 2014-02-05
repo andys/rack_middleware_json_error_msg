@@ -3,5 +3,7 @@ rvm:
   - 2.1.0
   - 2.0.0
   - 1.9.3
-install: rake install:development
-script: rake test
+install:
+  - gem install echoe --verbose
+  - rake install:development --trace
+script: rake test --trace
