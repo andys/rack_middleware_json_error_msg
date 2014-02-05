@@ -1,0 +1,7 @@
+CHANGELOG
+Manifest
+README.md
+Rakefile
+lib/rack/middleware/json-error-msg.rb
+lib/rack/middleware/json-error-msg/railtie.rb
+test/test.rb
